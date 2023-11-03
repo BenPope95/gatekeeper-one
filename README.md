@@ -4,7 +4,7 @@
 
 Gate one was relatively straightforward.  It required the msg.sender to not equal tx.orgin. to pass this gate all I needed to do is interact with the gatekeeper contract through another contract. 
 
-```
+``` solidity 
 modifier gateOne() { 
 	require(msg.sender != tx.origin); 
 	_; 
