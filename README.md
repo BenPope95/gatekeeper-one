@@ -33,7 +33,9 @@ Gate3 involved passing in a bytes8 gatekey and passing checks where it compares 
 
 ``` solidity
 modifier gateThree(bytes8 _gateKey) { 
-require(uint32(uint64(_gateKey)) == uint16(uint64(_gateKey));        require(uint32(uint64(_gateKey)) != uint64(_gateKey); require(uint32(uint64(_gateKey)) == uint16(uint160(tx.origin)); 
+require(uint32(uint64(_gateKey)) == uint16(uint64(_gateKey));
+require(uint32(uint64(_gateKey)) != uint64(_gateKey);
+require(uint32(uint64(_gateKey)) == uint16(uint160(tx.origin)); 
 _;
 }
 ```
