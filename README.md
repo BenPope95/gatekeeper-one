@@ -14,7 +14,7 @@ modifier gateOne() {
 ## Gate 2
 Gate 2 is where things began to get tricky. The require statements condition is that gasleft() % 8191 needs to equal zero. Essentially the gasleft() needs to be divisible by 8191. 
 
-```
+``` solidity
 modifier gateTwo() { 
 	require(gasleft() % 8191 == 0); 
 	_; 
@@ -31,7 +31,7 @@ I was finally able to pass this gate by using a for loop to increase the gas by 
 
 Gate3 involved passing in a bytes8 gatekey and passing checks where it compares the gatekey bytes typecasted at different uint values.
 
-```
+``` solidity
 modifier gateThree(bytes8 _gateKey) { 
 require(uint32(uint64(_gateKey)) == uint16(uint64(_gateKey));        require(uint32(uint64(_gateKey)) != uint64(_gateKey); require(uint32(uint64(_gateKey)) == uint16(uint160(tx.origin)); 
 _;
@@ -55,7 +55,7 @@ It is important to note when using forge test logBytes() the zeros will be shown
 
 ### Part 1
 
-```
+``` solidity
 require(uint32(uint64(_gateKey)) == uint16(uint64(_gateKey));
 ```
 
@@ -81,7 +81,7 @@ Now when we compare the uint32 and uint16 they will both be 0x0000cdef.
 
 ### Part 2
 
-```
+``` solidity
 require(uint32(uint64(_gateKey)) != uint64(_gateKey);
 ```
 
@@ -99,7 +99,7 @@ These values are not equal so our update gatekey passes this check.
 
 ### Part 3 
 
-```
+``` solidity
 require(uint32(uint64(_gateKey)) == uint16(uint160(tx.origin));
 ```
 
